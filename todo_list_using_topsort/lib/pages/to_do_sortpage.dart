@@ -1,4 +1,6 @@
 //import 'package:flutter/cupertino.dart';
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 class TodoListScreen extends StatefulWidget {
@@ -77,6 +79,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
       appBar: AppBar(
         title: Text('Daily To-Do List'),
         centerTitle: true,
+        backgroundColor: Colors.amber,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -100,9 +103,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
             SizedBox(height: 10),
             ElevatedButton(
               onPressed: addTask,
-              child: Text('Add Task'),
+              child: const Text('Add Task'),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Expanded(
               child: ListView.builder(
                 itemCount: tasks.length,
@@ -113,7 +116,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                       title: Text(task['name']),
                       subtitle: Text('Depends on: ${task['dependencies'].join(', ') ?? 'None'}'),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
+                        icon: const Icon(Icons.delete, color: Colors.red),
                         onPressed: () => deleteTask(task['name']),
                       ),
                     ),
@@ -121,16 +124,20 @@ class _TodoListScreenState extends State<TodoListScreen> {
                 },
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
+
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.amber,
+              ),
               onPressed: computeTopologicalOrder,
-              child: Text('Compute Topological Order'),
+              child: const Text('Compute Topological Order'),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             if (topologicalOrder.isNotEmpty)
               Text(
                 'Topological Order: ${topologicalOrder.join(' -> ')}',
-                style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
           ],
         ),
