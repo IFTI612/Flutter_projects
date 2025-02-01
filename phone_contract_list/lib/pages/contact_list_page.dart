@@ -117,13 +117,15 @@ class _ContactListPageState extends State<ContactListPage> {
                       leading: const Icon(Icons.person),
                       title: Text(
                         _contacts[index]['name']!,
-                        style: const TextStyle(color: Colors.black87),
+                        style: const TextStyle(color: Colors.redAccent),
                       ),
                       subtitle: Text(
                         _contacts[index]['number']!,
                         style: const TextStyle(color: Colors.black54),
                       ),
-                      trailing: const Icon(Icons.call, color: Colors.blue),
+                      trailing: IconButton(onPressed: () {},
+                        icon:Icon(Icons.call, color: Colors.blue),
+                      ),
                       onLongPress: () => _deleteContact(index),
                     ),
                   );
